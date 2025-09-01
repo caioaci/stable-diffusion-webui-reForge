@@ -543,7 +543,7 @@ class VAE:
         self.patcher = ldm_patched.modules.model_patcher.ModelPatcher(self.first_stage_model, load_device=self.device, offload_device=offload_device)
         logging.info("VAE load device: {}, offload device: {}, dtype: {}".format(self.device, offload_device, self.vae_dtype))
 
-        if shared.opts.reflective_padding_vae:
+        if shared.opts.reflective_padding_vae_sd == "Enabled":
             for module in self.first_stage_model.modules():
                 from torch import nn
                 logging.info(self)
